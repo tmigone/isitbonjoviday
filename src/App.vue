@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <div v-if="bonJoviDay">
-      <h1>HELL YES IT IS!</h1>
-      <img alt="Vue logo" src="./assets/jbj.jpg">
+    <div v-if="mayTheFourth">
+      <h1>May the Force be with you!</h1>
+      <img alt="Vue logo" src="./assets/may.jpg" />
     </div>
-    <div v-if="!bonJoviDay">
-      <h1>{{ daysToFriday }} day{{ daysToFriday > 1 ? 's' : '' }} until next Bon Jovi Day.</h1>
-      <img alt="Vue logo" src="./assets/sad.jpg">
+    <div v-if="!mayTheFourth">
+      <h1>Sadly no :(</h1>
+      <img alt="Vue logo" src="./assets/sad.jpeg" />
     </div>
   </div>
 </template>
@@ -17,17 +17,12 @@ export default {
   name: 'app',
   data () {
     return {
-      bonJoviDay: false,
-      daysToFriday: -1
+      mayTheFourth: false
     }
   },
   mounted () {
-    this.daysToFriday = 5 - new Date().getDay()
-    this.daysToFriday = this.daysToFriday < 0 ? 6 : this.daysToFriday
-    this.bonJoviDay = this.daysToFriday === 0
-
-    console.log(`Days to friday: ${this.daysToFriday}`)
-    console.log(`Is it Bon Jovi day?: ${this.bonJoviDay}`)
+    this.mayTheFourth = new Date().getMonth() === 4 && new Date().getDate() === 4
+    console.log(`Is it May the Fourth?: ${this.mayTheFourth}`)
   }
 }
 </script>
